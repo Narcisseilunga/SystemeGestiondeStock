@@ -1,0 +1,19 @@
+
+	Rapimarket-Inventaire
+	Telephone No. 8899773344 , Marrakech
+=============================================
+Nom du Client: CASTERMAN
+Tel client : 971001691
+Facture No. 8263251			Date: 08/05/2024
+=============================================
+Nom Produit			QTE	Prix
+=============================================
+        
+ Samsung 32 inch			1	DH 3200.0
+=============================================
+Montant Total				DH 3200.0
+Réduction				DH 160.0
+Net à Payer				DH 3040.0
+=============================================
+
+        

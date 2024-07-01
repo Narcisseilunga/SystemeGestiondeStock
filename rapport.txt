@@ -1,0 +1,45 @@
+Date : 29/06/2024
+Objet : Ajout d'un nouveau catégorie de produit
+Informations : MINI MILITIA
+---
+Date : 29/06/2024
+Objet : Suppression d'une catégorie de produit
+Informations : MINI MILITIA
+---
+Date : 01/07/2024
+Objet : Connexion Etablie Par L'Admin
+Informations : |Nom : Casterman|
+---
+Date : 01/07/2024
+Objet : Ajout d'un nouveau catégorie de produit par par L' 
+Informations : Vetements
+---
+Date : 01/07/2024
+Objet : Suppression d'une catégorie de produit par L' 
+Informations : Vetements
+---
+Date : 01/07/2024
+Objet : Connexion Etablie Par L'Admin
+Informations : |Nom : Casterman|
+---
+Date : 01/07/2024
+Objet : Connexion Etablie Par L'Admin
+Informations : |Nom : Casterman|
+---
+Date : 2024-07-01
+Objet : Connexion Etablie Par L'Admin
+Informations : |Nom : Casterman|
+---
+Date : 01/07/2024
+Date : 2024-07-01
+Objet : Connexion Etablie Par L'Admin
+Informations : |Nom : Casterman|
+---
+Date : 2024-07-01
+Objet : Connexion Etablie Par L'Admin
+Informations : |Nom : Casterman|
+---
+Date : 2024-07-01
+Objet : Connexion Etablie Par L'Admin
+Informations : |Nom : Casterman|
+---
