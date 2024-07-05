@@ -1,4 +1,4 @@
-c<?php
+<?php
 session_start(); // Démarrer la session
 
 // Connexion à la base de données SQLite (remplacez le chemin par le chemin correct vers votre fichier .db)
