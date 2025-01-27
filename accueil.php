@@ -1,6 +1,6 @@
 <?php
 require "jaime_et_commentaire.php";
-require "Chat/redirect.php";
+require "Chat_main/redirect.php";
 
 $my_email = $_SESSION['user']['email'];
 

@@ -57,9 +57,9 @@ $etat =   $user->etat  == 1 ? "Online" : "Ofline";
     <div class="d-felx">
         <a class="btn btn-primary block" href="login.php">Login</a> <br>
         <a class="btn btn-info block" href="regester.php">Regester</a> <br>
-        <a class="btn btn-warning block" href="index.php">Page Index</a>
+        <a class="btn btn-warning block" href="index.php">Retour</a>
     </div>
-</div>
+</div><br><br>
 
 <script src="users-cherche.js"></script>
 

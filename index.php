@@ -1,6 +1,6 @@
 <?php
 require "jaime_et_commentaire.php";
-require "Chat/redirect.php";
+require "Chat_main/redirect.php";
 
 $my_email =  $_SESSION['user']['email'];
 
@@ -424,7 +424,10 @@ if ((isset($_GET['name']) && isset($_GET['price']))) {
 
 require_once 'compteur.php';
 require_once 'footer.php';
+include "footer_chat.php";
+
 ?>
+
  
 </body>
 </html>

@@ -74,7 +74,7 @@ if (!isset($_GET['id_User'])) {
             </form>
         </div>
 
-    </div>
+    </div><br>
 
    
 <?php

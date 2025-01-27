@@ -8,7 +8,7 @@ include 'header.php';
 <a href="login.php">Login</a> <br>
 <a href="regester.php">Regester</a> <br>
 <a href="chat_page.php">Page Chat</a>
-
+<br><br>
 
 
 
