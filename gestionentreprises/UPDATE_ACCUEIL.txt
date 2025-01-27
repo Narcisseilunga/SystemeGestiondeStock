@@ -1,0 +1,232 @@
+ajoutez une balise html select qui selectionne la devise du client qui vas convertir le prix en cdf ou en dollars : à partir du bout de code fourni ci-haut : <?php
+session_start(); // Démarrer la session
+if (isset($_GET['entreprise'])) {
+    $_SESSION['focus'] = $_GET['entreprise'];
+}
+
+// URL de l'API des taux de change
+$url = 'https://cdn.taux.live/api/latest.json';
+// Récupération des données depuis l'API
+$response = file_get_contents($url);
+if ($response === FALSE) {
+    
+    die('Erreur lors de la récupération des données.');
+}
+// Décoder la réponse JSON
+$data = json_decode($response, true);
+
+if (isset($data['rates']['CDF'])) {
+    // Récupérer le taux de change en CDF
+    $usdToCdf = $data['rates']['CDF'];
+    $money =  $row['price'] / $usdToCdf; 
+   if ($row['devise'] == "CDF") {
+       echo "Fc ".htmlspecialchars(number_format($row['price'],0) ?? '0'); ?><?php echo "\n $".number_format($money,2)?>
+   <?php }
+   else {echo "$ ".htmlspecialchars(number_format($row['price'],0) ?? '0'); ?><?php echo "\n Fc".number_format($usdToCdf* $row['price'] , 2)?> 
+   <?php } 
+} else {
+   $message[] = 'taux de change en franc congolais non disponible';
+
+}
+
+// Connexion à la base de données MySQL
+$host = 'localhost'; // Remplacez par votre hôte MySQL
+$dbname = 'system_vente'; // Remplacez par le nom de votre base de données
+$username = 'root'; // Remplacez par votre nom d'utilisateur MySQL
+$password = ''; // Remplacez par votre mot de passe MySQL
+
+try {
+    $db = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo 'Erreur de connexion : ' . $e->getMessage();
+    exit;
+}
+
+if (isset($_SESSION['focus'])) {
+    $nom_entreprise = $_SESSION['focus'];
+
+    $filter_category = isset($_GET['category']) ? $_GET['category'] : '';
+    $search_query = isset($_GET['search']) ? $_GET['search'] : '';
+
+    $sql = "SELECT * FROM product WHERE nom_entreprise = :nom_entreprise";
+    $params = [':nom_entreprise' => $nom_entreprise];
+
+    if ($filter_category) {
+        $sql .= " AND category = :category";
+        $params[':category'] = $filter_category;
+    }
+
+    if ($search_query) {
+        $sql .= " AND name LIKE :search";
+        $params[':search'] = "%$search_query%";
+    }
+
+
+}else {
+    // Récupération des produits selon le filtre de catégorie ou de recherche
+    $filter_category = isset($_GET['category']) ? $_GET['category'] : '';
+    $search_query = isset($_GET['search']) ? $_GET['search'] : '';
+
+    $sql = "SELECT * FROM product WHERE 1=1";
+    $params = [];
+
+    if ($filter_category) {
+        $sql .= " AND category = :category";
+        $params[':category'] = $filter_category;
+    }
+
+    if ($search_query) {
+        $sql .= " AND name LIKE :search";
+        $params[':search'] = "%$search_query%";
+    }
+
+
+    
+}
+$stmt = $db->prepare($sql);
+$stmt->execute($params);
+
+// Vérifier si la requête a réussi
+$produits = [];
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $produit = [
+        'categorie' => $row['category'],
+        'supplier' => $row['supplier'],
+        'name' => $row['name'],
+        'price' => $row['price'],
+        'qty' => $row['qty'],
+        'status' => $row['status'],
+        'image_prod' => $row['image_prod']
+    ];
+    $produits[] = $produit;
+}
+require_once 'header.php';
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des produits</title>
+    <link rel="stylesheet" href="produit_style.css">
+</head>
+<body>
+
+<!-- Menu déroulant pour trier par catégorie -->
+<form method="get" action="">
+    <label for="category">Filtrer par catégorie :</label>
+    <select name="category" id="category" onchange="this.form.submit()">
+        <option value="">Toutes les catégories</option>
+        <?php
+        // Récupérer les catégories uniques
+        $categories = array_unique(array_column($produits, 'categorie'));
+        foreach ($categories as $category) {
+            echo '<option value="' . $category . '">' . $category . '</option>';
+        }
+        ?>
+    </select>
+    
+    <!-- Barre de recherche -->
+    <label for="search">Recherche :</label>
+    <input type="text" name="search" id="search" value="<?php echo htmlspecialchars($search_query); ?>">
+    <input type="submit" value="Rechercher">
+</form>
+
+<?php
+// Boucle sur chaque catégorie de produits
+foreach (array_unique(array_column($produits, 'categorie')) as $unique_category) {
+    echo '<section class="product-section" id="' . strtolower($unique_category) . '">';
+    echo '    <div class="product-container">';
+    echo '        <h2 class="product-section-title">' . $unique_category . '</h2>';
+    echo '        <table class="product-table">';
+    echo '            <thead>';
+    echo '                <tr>';
+    echo '                    <th>Image</th>';
+    echo '                    <th>Nom</th>';
+    echo '                    <th>Prix</th>';
+    echo '                    <th>Action</th>';
+    echo '                </tr>';
+    echo '            </thead>';
+    echo '            <tbody>';
+    foreach ($produits as $produit) {
+        if ($produit['categorie'] == $unique_category) {
+            echo '                <tr>';
+            echo '                    <td><img src="uploaded_img/' . $produit['image_prod'] . '" alt="' . $produit['name'] . '" width="100"></td>';
+            echo '                    <td class="product-name">' . $produit['name'] . '</td>';
+            echo '                    <td class="product-price">' . $produit['price'] . ' $</td>';
+            echo '                    <td><a href="?name=' . $produit['name'] . '&price=' . $produit['price'] . '">Ajouter au panier</a></td>';
+            echo '                </tr>';
+        }
+    }
+    echo '            </tbody>';
+    echo '        </table>';
+    echo '    </div>';
+    echo '</section>';
+}
+
+// Reste du code...
+// Vérifier si le panier existe déjà dans la session
+if (!isset($_SESSION['panier_produit'])) {
+    $_SESSION['panier_produit'] = array(); // Initialiser le panier s'il n'existe pas
+}
+
+// Ajouter un article au panier
+
+if ((isset($_GET['name']) && isset($_GET['price']))) {
+    
+    if (!isset($_SESSION['id_utilisateur'])) {
+        echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
+        echo '<script type="text/javascript">';
+        echo 'Swal.fire({
+            title: "Avertissement",
+            text: "Vous devriez etre connecté pour effectuer cette opération ",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Se connecter",
+            cancelButtonText: "rester sur la page d\'accueil "
+        }).then((result) => {
+            if (result.isConfirmed) {
+            
+                window.location.href = "creation_compte/connexion.php";
+            } else {
+              l
+                window.location.href = "index.php"; 
+            }
+        });';
+        echo '</script>';
+    }
+    $nom_produit = $_GET['name'];
+    $prix_produit = $_GET['price'];
+
+    // Vérifier si le produit est déjà dans le panier
+    $produit_existe = false;
+    foreach ($_SESSION['panier_produit'] as &$article) {
+        if ($article['nom'] == $nom_produit) {
+            $article['quantite']++; // Incrémenter la quantité si le produit est déjà dans le panier
+            $produit_existe = true;
+            break;
+        }
+    }
+    // Ajouter le produit au panier s'il n'y est pas déjà
+    if (!$produit_existe) {
+        $_SESSION['panier_produit'][] = array(
+            'nom' => $nom_produit,
+            'prix' => $prix_produit,
+            'quantite' => 1
+        );
+    }
+
+    // Ajouter l'alerte SweetAlert
+    echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
+    echo '<script type="text/javascript">';
+    echo 'Swal.fire("Succès", "L\'article a bien été ajouté au panier", "success");';
+    echo '</script>';
+    header("Location: index.php");
+}
+
+$compteur = "";
+require_once 'compteur.php';
+require_once 'footer.php';
+?>
+</body>
+</html>

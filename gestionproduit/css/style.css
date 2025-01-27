@@ -1,163 +1,160 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
 
-:root{
-   --green:#27ae60;
-   --black:#333;
-   --white:#fff;
-   --bg-color:#eee;
-   --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
-   --border:.1rem solid var(--black);
+:root {
+   --primary-color: #FF5733; /* Couleur primaire (orange) */
+   --secondary-color: #8E44AD; /* Couleur secondaire (violet) */
+   --accent-color: #27AE60; /* Couleur d'accent (vert) */
+   --dark-color: #384f66; /* Couleur foncée (bleu foncé) */
+   --light-color: #F4D03F; /* Couleur claire (jaune) */
+   --white: #ffffff; /* Couleur blanche */
+   --box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2); /* Ombre portée */
+   --border: 0.2rem solid var(--dark-color); /* Bordure */
 }
 
-*{
-   font-family: 'Poppins', sans-serif;
-   margin:0; padding:0;
+* {
+   font-family: 'Poppins', sans-serif; /* Police Poppins par défaut */
+   margin: 0; 
+   padding: 0;
    box-sizing: border-box;
-   outline: none; border:none;
+   outline: none; 
+   border: none;
    text-decoration: none;
+   transition: all 0.3s ease; /* Transition douce pour les éléments */
 }
 
-html{
-   font-size: 62.5%;
-   overflow-x: hidden;
+html {
+   font-size: 62.5%; /* Taille de police de base */
+   overflow-x: hidden; /* Évite le débordement horizontal */
 }
 
-.btn{
+.btn {
    display: block;
    width: 100%;
    cursor: pointer;
-   border-radius: .5rem;
+   border-radius: 0.5rem; /* Coins arrondis */
    margin-top: 1rem;
-   font-size: 1.7rem;
-   padding:1rem 3rem;
-   background: var(--green);
-   color:var(--white);
+   font-size: 1.7rem; /* Taille de police des boutons */
+   padding: 1rem 3rem;
+   background: var(--primary-color); /* Couleur de fond primaire */
+   color: var(--white); /* Couleur du texte */
    text-align: center;
+   box-shadow: var(--box-shadow); /* Ombre portée */
 }
 
-.btn:hover{
-   background: var(--black);
+.btn:hover {
+   background: var(--secondary-color); /* Couleur de fond au survol */
 }
 
-.message{
+.message {
    display: block;
-   background: var(--bg-color);
-   padding:1.5rem 1rem;
-   font-size: 2rem;
-   color:var(--black);
+   background: var(--light-color); /* Couleur de fond des messages */
+   padding: 1.5rem 1rem;
+   font-size: 2rem; /* Taille de police des messages */
+   color: var(--dark-color); /* Couleur du texte des messages */
    margin-bottom: 2rem;
    text-align: center;
+   border-radius: 0.5rem; /* Coins arrondis */
+   box-shadow: var(--box-shadow); /* Ombre portée */
 }
 
-.container{
-   max-width: 1200px;
-   padding:2rem;
-   margin:0 auto;
+.container {
+   max-width: 1200px; /* Largeur maximale du conteneur */
+   padding: 2rem;
+   margin: 0 auto; /* Centrage automatique */
 }
 
-.admin-product-form-container.centered{
+.admin-product-form-container.centered {
    display: flex;
-   align-items: center;
-   justify-content: center;
-   min-height: 100vh;
-   
+   align-items: center; /* Alignement vertical */
+   justify-content: center; /* Alignement horizontal */
+   min-height: 100vh; /* Hauteur minimale */
 }
 
-.admin-product-form-container form{
-   max-width: 50rem;
-   margin:0 auto;
-   padding:2rem;
-   border-radius: .5rem;
-   background: var(--bg-color);
+.admin-product-form-container form {
+   max-width: 50rem; /* Largeur maximale du formulaire */
+   margin: 0 auto; 
+   padding: 2rem;
+   border-radius: 0.5rem; /* Coins arrondis */
+   background: var(--light-color); /* Couleur de fond du formulaire */
+   box-shadow: var(--box-shadow); /* Ombre portée */
 }
 
-.admin-product-form-container form h3{
-   text-transform: uppercase;
-   color:var(--black);
+.admin-product-form-container form h3 {
+   text-transform: uppercase; /* Texte en majuscules */
+   color: var(--dark-color); /* Couleur du texte */
    margin-bottom: 1rem;
    text-align: center;
-   font-size: 2.5rem;
+   font-size: 2.5rem; /* Taille de police du titre */
 }
 
-.admin-product-form-container form .box{
-   width: 100%;
-   border-radius: .5rem;
-   padding:1.2rem 1.5rem;
-   font-size: 1.7rem;
-   margin:1rem 0;
-   background: var(--white);
-   text-transform: none;
+.admin-product-form-container form .box {
+   width: 100%; /* Largeur du champ de saisie */
+   border-radius: 0.5rem; /* Coins arrondis */
+   padding: 1.2rem 1.5rem; /* Espacement interne */
+   font-size: 1.7rem; /* Taille de police des champs de saisie */
+   margin: 1rem 0; /* Espacement externe */
+   background: var(--white); /* Couleur de fond des champs de saisie */
+   text-transform: none; /* Pas de transformation de texte */
+   box-shadow: var(--box-shadow); /* Ombre portée */
 }
 
-.product-display{
-   margin:2rem 0;
+.product-display {
+   margin: 2rem 0; /* Marges externes */
+   overflow-x: auto; /* Défilement horizontal si nécessaire */
+   overflow-y: auto; /* Défilement vertical si nécessaire */
 }
 
-.product-display .product-display-table{
-   width: 100%;
-   text-align: center;
+.product-display .product-display-table {
+   width: 100%; /* Largeur de la table */
+   text-align: center; /* Alignement du texte */
+   box-shadow: var(--box-shadow); /* Ombre portée */
 }
 
-.product-display .product-display-table thead{
-   background: var(--bg-color);
+.product-display .product-display-table thead {
+   background: var(--light-color); /* Couleur de fond de l'en-tête */
 }
 
-.product-display .product-display-table th{
-   padding:1rem;
-   font-size: 2rem;
+.product-display .product-display-table th {
+   padding: 1rem; /* Espacement interne des en-têtes */
+   font-size: 2rem; /* Taille de police des en-têtes */
 }
 
-
-.product-display .product-display-table td{
-   padding:1rem;
-   font-size: 2rem;
-   border-bottom: var(--border);
+.product-display .product-display-table td {
+   padding: 1rem; /* Espacement interne des cellules */
+   font-size: 2rem; /* Taille de police des cellules */
+   border-bottom: var(--border); /* Bordure inférieure */
 }
 
-.product-display .product-display-table .btn:first-child{
-   margin-top: 0;
+.product-display .product-display-table .btn:first-child {
+   margin-top: 0; /* Pas de marge supérieure pour le premier bouton */
 }
 
-.product-display .product-display-table .btn:last-child{
-   background: crimson;
+.product-display .product-display-table .btn:last-child {
+   background: var(--accent-color); /* Couleur de fond pour le dernier bouton */
 }
 
-.product-display .product-display-table .btn:last-child:hover{
-   background: var(--black);
+.product-display .product-display-table .btn:last-child:hover {
+   background: var(--dark-color); /* Couleur de fond au survol pour le dernier bouton */
 }
 
+@media (max-width: 991px) {
+   html {
+      font-size: 55%; /* Réduction de la taille de police pour les écrans plus petits */
+   }
+}
 
-
-
-
-
-
-
-
-@media (max-width:991px){
-
-   html{
-      font-size: 55%;
+@media (max-width: 768px) {
+   .product-display {
+      overflow-y: auto; /* Ajout de défilement vertical */
    }
 
+   .product-display .product-display-table {
+      width: 80rem; /* Largeur de la table sur petits écrans */
+   }
 }
 
-@media (max-width:768px){
-
-   .product-display{
-      overflow-y:scroll;
+@media (max-width: 450px) {
+   html {
+      font-size: 50%; /* Réduction supplémentaire de la taille de police */
    }
-
-   .product-display .product-display-table{
-      width: 80rem;
-   }
-
-}
-
-@media (max-width:450px){
-
-   html{
-      font-size: 50%;
-   }
-
 }

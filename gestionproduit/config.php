@@ -1,12 +1,15 @@
 <?php
+$host = 'localhost'; // Remplacez par votre hôte MySQL
+$dbname = 'system_vente'; // Remplacez par le nom de votre base de données
+$username = 'root'; // Remplacez par votre nom d'utilisateur MySQL
+$password = ''; // Remplacez par votre mot de passe MySQL
 
 try {
-    $conn = new PDO('sqlite:/path/to/your/database.db');
-    // Définir le mode d'erreur PDO sur Exception
+    $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connexion réussie à SQLite";
 } catch (PDOException $e) {
-    echo "Erreur de connexion : " . $e->getMessage();
+    echo 'Erreur de connexion : ' . $e->getMessage();
+    exit;
 }
 
 ?>

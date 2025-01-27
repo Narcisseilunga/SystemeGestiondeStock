@@ -16,7 +16,7 @@ body {
 .Btn_add {
     width: fit-content;
     margin-bottom:20px;
-    background-color: #2bc48a;
+    background-color: #312ed6;
     padding: 5px 20px;
     color: #fff;
     display: flex;
@@ -51,6 +51,14 @@ img {
     height: 25px;
    
 }
+.container {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.agrandir {
+    width: 150px;
+    height: auto;
+}
 tr:nth-child(2n){
     background-color: #f6f8f8;
 }
@@ -71,7 +79,7 @@ tr:nth-child(2n) td {
     flex-direction: column;
 }
 .back_btn {
-    color: #2bc48a;
+    color: #312ed6;
     text-decoration: 0;
     display: flex;
     align-items: center;
@@ -93,14 +101,15 @@ label {
     margin-top: 5px;
     text-transform: uppercase;
 }
-input{
+input,select{
     padding: 5px;
     border: 1px solid #999;
     outline: 0;
     margin-top: 2px;
 }
+
 input:focus{
-    border: 1px solid #ffcb61;
+    border: 1px solid #46d0e2;
 }
 input[type="submit"]{
     margin-top: 25px;

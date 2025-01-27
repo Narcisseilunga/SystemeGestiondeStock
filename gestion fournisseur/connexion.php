@@ -1,7 +1,15 @@
 <?php
-  //connexion à la base de données
-  $con = mysqli_connect("localhost","root","","entreprises");
-  if(!$con){
-     echo "Vous n'êtes pas connecté à la base de donnée";
-  }
+// Connexion à la base de données MySQL
+$host = 'localhost'; // Remplacez par votre hôte MySQL
+$dbname = 'system_vente'; // Remplacez par le nom de votre base de données
+$username = 'root'; // Remplacez par votre nom d'utilisateur MySQL
+$password = ''; // Remplacez par votre mot de passe MySQL
+
+try {
+    $con = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo 'Erreur de connexion : ' . $e->getMessage();
+    exit;
+}
 ?>

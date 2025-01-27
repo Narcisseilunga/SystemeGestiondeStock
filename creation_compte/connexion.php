@@ -54,13 +54,20 @@
 <body>
     <div class="container">
         <h2>Connexion</h2>
-        <form action="traitement.php" method="post">
+        <form action="test.php" method="post">
             <label for="email">Adresse email:</label>
             <input type="email" id="email" name="email">
             <label for="password">Mot de passe:</label>
             <input type="password" id="password" name="password">
             <input type="submit" value="Se connecter">
         </form>
+        <p>
+            pas de compte ?<br>
+            <a href="inscription_util.php">enregistrez-vous</a>
+        </p>
+        <!--<p> Vous avez oublier votre mot de passe ?<br>
+            <a href="donnee_reset.php">Renitialiser-le</a>
+        </p>-->
     </div>
 </body>
 </html>

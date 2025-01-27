@@ -1,0 +1,62 @@
+<?php
+session_start(); // Démarrer la session
+
+// Connexion à la base de données SQLite
+$database = 'C:/Users/EMM/Documents/Application-de-Gestion-de-Stock/Stock_Management_System/system.db';
+
+try {
+    $conn = new PDO("sqlite:$database");
+    // Configurer PDO pour qu'il lance des exceptions en cas d'erreur
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Erreur de connexion à la base de données: " . $e->getMessage());
+}
+
+// Récupérer les données du formulaire
+$email = $_POST['email'];
+$password = $_POST['password'];
+
+if (empty($email) || empty($password)) {
+    die("Email ou mot de passe manquant.");
+}
+
+// Requête SQL pour récupérer les informations de l'employé
+$sql = "SELECT * FROM employee WHERE id = :email";
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':email', $email);
+$stmt->execute();
+
+if ($stmt->rowCount() >= 0) {
+    // L'utilisateur existe dans la base de données
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Vérifier le mot de passe et l'adresse email hachés
+    if (password_verify($password, $row['password']) && hash_equals($email, $row['email'])) {
+        $type_employe = $row['type'];
+
+        // Rediriger l'utilisateur en fonction de son type d'employé
+        if ($type_employe == 'Admin') {
+            $_SESSION['id_utilisateur'] = $row['id'];
+            $_SESSION['img_utilisateur'] = $row['img_emp'];
+            $_SESSION['nom_utilisateur'] = $row['name'];
+            $_SESSION['email_utilisateur'] = $row['email'];
+            $_SESSION['type'] = $row['type'];
+
+            header("Location: ../Dashboard/index.php");
+            exit;
+        } elseif ($type_employe == 'client') {
+            header("Location: ../panier.php");
+            exit;
+        } else {
+            echo "Type d'employé non reconnu.";
+        }
+    } else {
+        echo "Adresse email ou mot de passe incorrect.";
+    }
+} else {
+    // L'utilisateur n'existe pas dans la base de données
+    echo "Adresse email incorrecte.";
+}
+
+$conn = null;
+?>

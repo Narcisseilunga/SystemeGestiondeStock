@@ -1,6 +1,6 @@
 <?php
 // Connexion à la base de données SQLite3
-$database = "nom_de_la_base_de_donnees.sqlite";
+$database = 'sqlite:C:/Users/EMM/Documents/Application-de-Gestion-de-Stock/Stock_Management_System/system.db';
 
 $conn = new PDO('sqlite:'.$database);
 
@@ -21,7 +21,7 @@ if ($new_password !== $confirm_password) {
 $reset_code = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 6);
 
 // Requête SQL pour récupérer les informations de l'employé
-$sql = "SELECT * FROM employes WHERE email = '$email'";
+$sql = "SELECT * FROM compte WHERE email = '$email'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -40,7 +40,7 @@ if ($result->num_rows > 0) {
     }
     
     // Mettre à jour le mot de passe dans la base de données
-    $sql = "UPDATE employes SET password = '$reset_code' WHERE email = '$email'";
+    $sql = "UPDATE compte SET password = '$reset_code' WHERE email = '$email'";
     if ($conn->exec($sql)) {
         echo "Mot de passe réinitialisé avec succès.";
         header("mot_de_passe_oublier.php");

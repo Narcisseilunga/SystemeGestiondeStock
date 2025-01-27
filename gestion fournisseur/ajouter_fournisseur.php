@@ -4,53 +4,63 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter</title>
+    <title>Ajouter un Fournisseur</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <?php
-       //vérifier que le bouton ajouter a bien été cliqué
-       if(isset($_POST['button'])){
-           //extraction des informations envoyé dans des variables par la methode POST
-           extract($_POST);
-           //verifier que tous les champs ont été remplis
-           if(isset($nom) && isset($prenom) && $age){
-                //connexion à la base de donnée
-                include_once "connexion.php";
-                //requête d'ajout
-                $req = mysqli_query($con , "INSERT INTO Employe VALUES(NULL, '$nom', '$prenom','$age')");
-                if($req){//si la requête a été effectuée avec succès , on fait une redirection
-                    header("location: employe.php");
-                }else {//si non
-                    $message = "Employé non ajouté";
-                }
+<?php
+session_start();
+$nom_entreprise = $_SESSION['nom_entreprise'];
 
-           }else {
-               //si non
-               $message = "Veuillez remplir tous les champs !";
-           }
-       }
-    
-    ?>
-    <div class="form">
-        <a href="employe.php" class="back_btn"><img src="images/back.png"> Retour</a>
-        <h2>Ajouter un employé</h2>
-        <p class="erreur_message">
-            <?php 
-            // si la variable message existe , affichons son contenu
-            if(isset($message)){
-                echo $message;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nom = $_POST['nom'] ?? null;
+    $contact = $_POST['contact'] ?? null;
+    $desc = $_POST['desc'] ?? null;
+
+    if ($nom && $contact && $desc) {
+        $host = 'localhost';
+        $dbname = 'system_vente';
+        $username = 'root';
+        $password = '';
+
+        try {
+            $db = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            // Préparation de la requête pour insérer le fournisseur
+            $stmt = $db->prepare("INSERT INTO supplier (name, contact, description, nom_entreprise) VALUES (:name, :contact, :description, :nom_entreprise)");
+            $stmt->bindParam(':name', $nom);
+            $stmt->bindParam(':contact', $contact);
+            $stmt->bindParam(':description', $desc);
+            $stmt->bindParam(':nom_entreprise', $nom_entreprise); // Lier le nom de l'entreprise
+
+            if ($stmt->execute()) {
+                header("Location: fournisseur.php");
+                exit;
+            } else {
+                $message = "Erreur lors de l'ajout du fournisseur.";
             }
-            ?>
-
+        } catch (PDOException $e) {
+            $message = 'Erreur de connexion : ' . $e->getMessage();
+        }
+    } else {
+        $message = "Veuillez remplir tous les champs !";
+    }
+}
+?>
+    <div class="form">
+        <a href="fournisseur.php" class="back_btn"><img src="images/back.png" alt="Retour"> Retour</a>
+        <h2>Ajouter un Fournisseur</h2>
+        <p class="erreur_message">
+            <?php if (isset($message)) echo htmlspecialchars($message); ?>
         </p>
         <form action="" method="POST">
-            <label>Nom</label>
-            <input type="text" name="nom">
-            <label>Prénom</label>
-            <input type="text" name="prenom">
-            <label>âge</label>
-            <input type="number" name="age">
+            <label for="nom">Nom</label>
+            <input type="text" name="nom" id="nom" required>
+            <label for="contact">Contact</label>
+            <input type="text" name="contact" id="contact" required>
+            <label for="desc">Description</label>
+            <input type="text" name="desc" id="desc" required>
             <input type="submit" value="Ajouter" name="button">
         </form>
     </div>

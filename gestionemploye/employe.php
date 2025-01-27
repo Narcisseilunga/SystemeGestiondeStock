@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,45 +14,77 @@
         
         <table>
             <tr id="items">
+                <th>ID</th>
+                <th>Image</th>
                 <th>Nom</th>
-                <th>Prénom</th>
-                <th>Age</th>
+                <th>Email</th>
+                <th>Genre</th>
+                <th>Contact</th>
+                <th>date de Naissance</th>
+                <th>Date d'adhésion</th>
+                <th>Mot de Passe</th>
+                <th>Type</th>
+                <th>Adresse</th>
+                <th>Salaire</th>
+                <th>Statut</th>
+                <th>Fonction</th>
                 <th>Modifier</th>
                 <th>Supprimer</th>
             </tr>
-            <?php 
-                //inclure la page de connexion
-                include_once "connexion.php";
-                //requête pour afficher la liste des employés
-                $req = mysqli_query($con , "SELECT * FROM Employe");
-                if(mysqli_num_rows($req) == 0){
-                    //s'il n'existe pas d'employé dans la base de donné , alors on affiche ce message :
-                    echo "Il n'y a pas encore d'employé ajouter !" ;
-                    
-                }else {
-                    //si non , affichons la liste de tous les employés
-                    while($row=mysqli_fetch_assoc($req)){
-                        ?>
-                        <tr>
-                            <td><?=$row['nom']?></td>
-                            <td><?=$row['prenom']?></td>
-                            <td><?=$row['age']?></td>
-                            <!--Nous alons mettre l'id de chaque employé dans ce lien -->
-                            <td><a href="modifier_employe.php?id=<?=$row['id']?>"><img src="images/pen.png"></a></td>
-                            <td><a href="supprimer_employe.php?id=<?=$row['id']?>"><img src="images/trash.png"></a></td>
-                        </tr>
-                        <?php
-                    }
-                    
-                }
-            ?>
-      
-         
+            <?php
+             
+$nom_entreprise = $_SESSION['nom_entreprise'];
+
+// Inclure la page de connexion
+$host = 'localhost'; // Remplacez par votre hôte MySQL
+$dbname = 'system_vente'; // Remplacez par le nom de votre base de données
+$username = 'root'; // Remplacez par votre nom d'utilisateur MySQL
+$password = ''; // Remplacez par votre mot de passe MySQL
+
+try {
+    $con = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo 'Erreur de connexion : ' . $e->getMessage();
+    exit;
+}
+
+$db = $con;
+
+// Requête pour afficher la liste des employés filtrés par nom d'entreprise
+$sql = "SELECT * FROM employee WHERE nom_entreprise = :nom_entreprise";
+$stmt = $db->prepare($sql);
+$stmt->bindParam(':nom_entreprise', $nom_entreprise);
+$stmt->execute();
+
+// Affichons la liste des employés
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    echo "<tr>";
+    echo "<td>" . $row['id'] . "</td>";
+    echo "<td><img class=\"agrandir\" src=\"../uploaded_img/" . $row['image_emp'] . "\"></td>";
+    echo "<td>" . $row['name'] . "</td>";
+    echo "<td>" . $row['email'] . "</td>";
+    echo "<td>" . $row['gender'] . "</td>";
+    echo "<td>" . $row['contact'] . "</td>";
+    echo "<td>" . $row['dob'] . "</td>";
+    echo "<td>" . $row['doj'] . "</td>";
+    echo "<td>" . $row['password'] . "</td>";
+    echo "<td>" . $row['type'] . "</td>";
+    echo "<td>" . $row['address'] . "</td>";
+    echo "<td>" . $row['salary'] . "$</td>";
+    echo "<td>" . $row['statut_emp'] . "</td>";
+    echo "<td>" . $row['info_emp'] . "</td>";
+?>
+    <td><a href="modifier_employe.php?id=<?=$row['id']?>"><img src="images/pen.png"></a></td>
+    <td><a href="supprimer_employe.php?id=<?=$row['id']?>"><img src="images/trash.png"></a></td>
+</tr>
+<?php 
+} 
+$db = null; 
+?>
         </table>
-   
-   
-   
-   
     </div>
 </body>
 </html>
+<?php
+?>

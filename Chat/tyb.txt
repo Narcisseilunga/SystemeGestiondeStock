@@ -1,0 +1,17 @@
+
+
+
+
+
+https://www.youtube.com/watch?v=OmjIMWfFAGs&list=PLoBGtBK7uqyWWp5Q_ypAZB3biKu1UAh8q&index=7
+
+
+https://www.youtube.com/watch?v=18mxUzGa5EM&list=PLoBGtBK7uqyWWp5Q_ypAZB3biKu1UAh8q&index=2
+
+
+
+
+
+ db
+ alter table messages add constraint fk_user FOREIGN key ( user_msg) REFERENCES users (id)   on  DELETE CASCADE on UPDATE CASCADE
+

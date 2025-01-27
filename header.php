@@ -36,7 +36,7 @@
     <meta property="og:type" content="website">
   <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
   <body data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode" data-lang="fr"><header class="u-clearfix u-header u-header" id="sec-3304"><div class="u-clearfix u-sheet u-sheet-1">
-        <a href="https://nicepage.com" class="u-image u-logo u-image-1">
+        <a href="#" class="u-image u-logo u-image-1">
           <img src="stock.png" class="u-logo-image u-logo-image-1">
         </a>
         <nav class="u-menu u-menu-hamburger u-offcanvas u-menu-1" data-responsive-from="XL">
@@ -48,8 +48,10 @@
             </a>
           </div>
           <div class="u-custom-menu u-nav-container">
-            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Accueil.html" style="padding: 10px 20px;">Accueil</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="À-propos-de.html" style="padding: 10px 20px;">À propos de</a>
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="sd/Accueil.html" style="padding: 10px 20px;">Accueil</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="À-propos-de.php" style="padding: 10px 20px;">À propos de</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="index.php" style="padding: 10px 20px;">Contact</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Contact.html" style="padding: 10px 20px;">Contact</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Contact.html" style="padding: 10px 20px;">Contact</a>
 </li></ul>
           </div>
@@ -57,9 +59,11 @@
             <div class="u-container-style u-inner-container-layout u-opacity u-opacity-95 u-palette-1-dark-2 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close u-menu-close-1"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Accueil.php">Accueil</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="À-propos-de.html">À propos de</a>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="sd/Accueil.html">Accueil</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="À-propos-de.php">À propos de</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Contact.php">Contact</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.php">Magasins</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="panier.php">Panier</a>
 </li></ul>
               </div>
             </div>
@@ -85,9 +89,10 @@
                     <h1 class="u-align-left u-custom-font u-font-pt-sans u-text u-text-palette-2-base u-title u-text-1" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="0"><b> Listes d'articles à la une</b>
                       <br>
                     </h1>
-                    <p class="u-align-left u-text u-text-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Image from <a href="https://www.mlkshop.com/" class="u-active-none u-border-1 u-border-active-palette-2-base u-border-grey-75 u-border-hover-palette-2-base u-border-no-left u-border-no-right u-border-no-top u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-button-link u-button-style u-hover-none u-none u-radius-0 u-text-body-color u-top-left-radius-0 u-top-right-radius-0 u-btn-1" target="_blank">mlkshop</a>
+                    <p class="u-align-left u-text u-text-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Plateforme de vente :<a href="#" class="u-active-none u-border-1 u-border-active-palette-2-base u-border-grey-75 u-border-hover-palette-2-base u-border-no-left u-border-no-right u-border-no-top u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-button-link u-button-style u-hover-none u-none u-radius-0 u-text-body-color u-top-left-radius-0 u-top-right-radius-0 u-btn-1" target="_blank">
+                    <?php if (isset($_SESSION['focus'])) { echo $_SESSION['focus']; }else {?> SAAS WISDOM</a> <?php }?>
                     </p>
-                    <a href="https://nicepage.one" class="u-active-palette-2-base u-align-right u-border-none u-btn u-button-style u-gradient u-hover-palette-2-base u-none u-text-active-grey-15 u-text-body-alt-color u-text-hover-grey-10 u-btn-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Voir plus</a>
+                    <a href="#" class="u-active-palette-2-base u-align-right u-border-none u-btn u-button-style u-gradient u-hover-palette-2-base u-none u-text-active-grey-15 u-text-body-alt-color u-text-hover-grey-10 u-btn-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Voir plus</a>
                   </div>
                 </div>
                 <div class="u-align-left u-container-style u-image u-layout-cell u-size-36-lg u-size-36-xl u-size-60-md u-size-60-sm u-size-60-xs u-image-1" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500" data-image-width="700" data-image-height="829">
@@ -105,9 +110,10 @@
                   <div class="u-container-layout u-valign-middle u-container-layout-1">
                     <h1 class="u-align-left u-custom-font u-font-pt-sans u-text u-text-palette-2-base u-title u-text-1" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="0"><b></b>Vetements  
                     </h1>
-                    <p class="u-align-left u-text u-text-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Image from <a href="https://www.mlkshop.com/" class="u-active-none u-border-1 u-border-active-palette-2-base u-border-grey-75 u-border-hover-palette-2-base u-border-no-left u-border-no-right u-border-no-top u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-button-link u-button-style u-hover-none u-none u-radius-0 u-text-body-color u-top-left-radius-0 u-top-right-radius-0 u-btn-1" target="_blank">mlkshop</a>
+                    <p class="u-align-left u-text u-text-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Plateforme de vente : <a href="#" class="u-active-none u-border-1 u-border-active-palette-2-base u-border-grey-75 u-border-hover-palette-2-base u-border-no-left u-border-no-right u-border-no-top u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-button-link u-button-style u-hover-none u-none u-radius-0 u-text-body-color u-top-left-radius-0 u-top-right-radius-0 u-btn-1" target="_blank">
+                      <?php if (isset($_SESSION['focus'])) { echo $_SESSION['focus']; }else {?> SAAS WISDOM</a> <?php }?>
                     </p>
-                    <a href="hommes.php" class="u-active-palette-2-base u-align-right u-border-none u-btn u-button-style u-gradient u-hover-palette-2-base u-none u-text-active-grey-15 u-text-body-alt-color u-text-hover-grey-10 u-btn-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Voir plus</a>
+                    <a href="#" class="u-active-palette-2-base u-align-right u-border-none u-btn u-button-style u-gradient u-hover-palette-2-base u-none u-text-active-grey-15 u-text-body-alt-color u-text-hover-grey-10 u-btn-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Voir plus</a>
                   </div>
                 </div>
                 <div class="u-align-left u-container-style u-image u-image-default u-layout-cell u-size-36-lg u-size-36-xl u-size-60-md u-size-60-sm u-size-60-xs u-image-1" data-image-width="700" data-image-height="829" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">
@@ -125,9 +131,10 @@
                   <div class="u-container-layout u-valign-middle u-container-layout-1">
                     <h1 class="u-align-left u-custom-font u-font-pt-sans u-text u-text-palette-2-base u-title u-text-1" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="0"><b></b>Produits de ferme
                     </h1>
-                    <p class="u-align-left u-text u-text-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Image from <a href="https://www.mlkshop.com/" class="u-active-none u-border-1 u-border-active-palette-2-base u-border-grey-75 u-border-hover-palette-2-base u-border-no-left u-border-no-right u-border-no-top u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-button-link u-button-style u-hover-none u-none u-radius-0 u-text-body-color u-top-left-radius-0 u-top-right-radius-0 u-btn-1" target="_blank">mlkshop</a>
+                    <p class="u-align-left u-text u-text-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Plateforme de vente : <a href="https://www.mlkshop.com/" class="u-active-none u-border-1 u-border-active-palette-2-base u-border-grey-75 u-border-hover-palette-2-base u-border-no-left u-border-no-right u-border-no-top u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-button-link u-button-style u-hover-none u-none u-radius-0 u-text-body-color u-top-left-radius-0 u-top-right-radius-0 u-btn-1" target="_blank">
+                      <?php if (isset($_SESSION['focus'])) { echo $_SESSION['focus']; }else {?> SAAS WISDOM</a> <?php }?>
                     </p>
-                    <a href="femmes.php" class="u-active-palette-2-base u-align-right u-border-none u-btn u-button-style u-gradient u-hover-palette-2-base u-none u-text-active-grey-15 u-text-body-alt-color u-text-hover-grey-10 u-btn-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Voir plus</a>
+                    <a href="#" class="u-active-palette-2-base u-align-right u-border-none u-btn u-button-style u-gradient u-hover-palette-2-base u-none u-text-active-grey-15 u-text-body-alt-color u-text-hover-grey-10 u-btn-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Voir plus</a>
                   </div>
                 </div>
                 <div class="u-align-left u-container-style u-image u-image-default u-layout-cell u-size-36-lg u-size-36-xl u-size-60-md u-size-60-sm u-size-60-xs u-image-1" data-image-width="1230" data-image-height="1200" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">
@@ -145,9 +152,10 @@
                   <div class="u-container-layout u-valign-middle u-container-layout-1">
                     <h1 class="u-align-left u-custom-font u-font-pt-sans u-text u-text-palette-2-base u-title u-text-1" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="0"><b></b>Produit éléctromenagers
                     </h1>
-                    <p class="u-align-left u-text u-text-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Image from <a href="https://www.mlkshop.com/" class="u-active-none u-border-1 u-border-active-palette-2-base u-border-grey-75 u-border-hover-palette-2-base u-border-no-left u-border-no-right u-border-no-top u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-button-link u-button-style u-hover-none u-none u-radius-0 u-text-body-color u-top-left-radius-0 u-top-right-radius-0 u-btn-1" target="_blank">mlkshop</a>
+                    <p class="u-align-left u-text u-text-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Plateforme de vente : <a href="https://www.mlkshop.com/" class="u-active-none u-border-1 u-border-active-palette-2-base u-border-grey-75 u-border-hover-palette-2-base u-border-no-left u-border-no-right u-border-no-top u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-button-link u-button-style u-hover-none u-none u-radius-0 u-text-body-color u-top-left-radius-0 u-top-right-radius-0 u-btn-1" target="_blank">
+                    <?php if (isset($_SESSION['focus'])) { echo $_SESSION['focus']; }else {?> SAAS WISDOM</a> <?php }?>>
                     </p>
-                    <a href="enfants.php" class="u-active-palette-2-base u-align-right u-border-none u-btn u-button-style u-gradient u-hover-palette-2-base u-none u-text-active-grey-15 u-text-body-alt-color u-text-hover-grey-10 u-btn-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Voir plus</a>
+                    <a href="#" class="u-active-palette-2-base u-align-right u-border-none u-btn u-button-style u-gradient u-hover-palette-2-base u-none u-text-active-grey-15 u-text-body-alt-color u-text-hover-grey-10 u-btn-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Voir plus</a>
                   </div>
                 </div>
                 <div class="u-align-left u-container-style u-image u-image-default u-layout-cell u-size-36-lg u-size-36-xl u-size-60-md u-size-60-sm u-size-60-xs u-image-1" data-image-width="1230" data-image-height="1200" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">
@@ -165,9 +173,10 @@
                   <div class="u-container-layout u-valign-middle u-container-layout-1">
                     <h1 class="u-align-left u-custom-font u-font-pt-sans u-text u-text-palette-2-base u-title u-text-1" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="0"><b></b>accesoires et Gadget
                     </h1>
-                    <p class="u-align-left u-text u-text-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Image from <a href="https://www.mlkshop.com/" class="u-active-none u-border-1 u-border-active-palette-2-base u-border-grey-75 u-border-hover-palette-2-base u-border-no-left u-border-no-right u-border-no-top u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-button-link u-button-style u-hover-none u-none u-radius-0 u-text-body-color u-top-left-radius-0 u-top-right-radius-0 u-btn-1" target="_blank">mlkshop</a>
+                    <p class="u-align-left u-text u-text-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Plateforme de vente : <a href="https://www.mlkshop.com/" class="u-active-none u-border-1 u-border-active-palette-2-base u-border-grey-75 u-border-hover-palette-2-base u-border-no-left u-border-no-right u-border-no-top u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-button-link u-button-style u-hover-none u-none u-radius-0 u-text-body-color u-top-left-radius-0 u-top-right-radius-0 u-btn-1" target="_blank">
+                    <?php if (isset($_SESSION['focus'])) { echo $_SESSION['focus']; }else {?> SAAS WISDOM</a> <?php }?>
                     </p>
-                    <a href="accesoires.php" class="u-active-palette-2-base u-align-right u-border-none u-btn u-button-style u-gradient u-hover-palette-2-base u-none u-text-active-grey-15 u-text-body-alt-color u-text-hover-grey-10 u-btn-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Voir plus</a>
+                    <a href="#" class="u-active-palette-2-base u-align-right u-border-none u-btn u-button-style u-gradient u-hover-palette-2-base u-none u-text-active-grey-15 u-text-body-alt-color u-text-hover-grey-10 u-btn-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Voir plus</a>
                   </div>
                 </div>
                 <div class="u-align-left u-container-style u-image u-image-default u-layout-cell u-size-36-lg u-size-36-xl u-size-60-md u-size-60-sm u-size-60-xs u-image-1" data-image-width="1230" data-image-height="1200" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">
@@ -186,9 +195,9 @@
                   <div class="u-container-layout u-valign-middle u-container-layout-1">
                     <h1 class="u-align-left u-custom-font u-font-pt-sans u-text u-text-palette-2-base u-title u-text-1" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="0"><b></b>Produit de beauté & cosmetique
                     </h1>
-                    <p class="u-align-left u-text u-text-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Image from <a href="https://www.mlkshop.com/" class="u-active-none u-border-1 u-border-active-palette-2-base u-border-grey-75 u-border-hover-palette-2-base u-border-no-left u-border-no-right u-border-no-top u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-button-link u-button-style u-hover-none u-none u-radius-0 u-text-body-color u-top-left-radius-0 u-top-right-radius-0 u-btn-1" target="_blank">mlkshop</a>
+                    <p class="u-align-left u-text u-text-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Plateforme de vente : <a href="https://www.mlkshop.com/" class="u-active-none u-border-1 u-border-active-palette-2-base u-border-grey-75 u-border-hover-palette-2-base u-border-no-left u-border-no-right u-border-no-top u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-button-link u-button-style u-hover-none u-none u-radius-0 u-text-body-color u-top-left-radius-0 u-top-right-radius-0 u-btn-1" target="_blank">mlkshop</a>
                     </p>
-                    <a href="accesoires.php" class="u-active-palette-2-base u-align-right u-border-none u-btn u-button-style u-gradient u-hover-palette-2-base u-none u-text-active-grey-15 u-text-body-alt-color u-text-hover-grey-10 u-btn-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Voir plus</a>
+                    <a href="#" class="u-active-palette-2-base u-align-right u-border-none u-btn u-button-style u-gradient u-hover-palette-2-base u-none u-text-active-grey-15 u-text-body-alt-color u-text-hover-grey-10 u-btn-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">Voir plus</a>
                   </div>
                 </div>
                 <div class="u-align-left u-container-style u-image u-image-default u-layout-cell u-size-36-lg u-size-36-xl u-size-60-md u-size-60-sm u-size-60-xs u-image-1" data-image-width="1230" data-image-height="1200" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">

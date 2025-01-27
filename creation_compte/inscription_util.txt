@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (isset($_GET['nom_entreprise'])) {
+    $_SESSION['inscription_nom_entreprise'] = $_GET['nom_entreprise'];
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,13 +69,12 @@
             <input type="text" id="prenom" name="prenom" required>
             <label for="nom">Nom:</label>
             <input type="text" id="nom" name="nom" required>
-            <label for="genre">Genre:</label>
-            <select id="genre" name="genre">
-                <option value="homme">Homme</option>
-                <option value="femme">Femme</option>
-            </select>
+            <label for="postnom">Post-Nom:</label>
+            <input type="text" id="postnom" name="postnom" required>    
             <label for="telephone">Numéro de téléphone:</label>
-            <input type="tel" id="telephone" name="telephone" required>
+            <input type="tel" id="telephone" name="telephone" required>  
+            <label for="telephone">Addresse:</label>
+            <input type="tel" id="address" name="addresse" required>
             <label for="email">Adresse email:</label>
             <input type="email" id="email" name="email" required>
             <label for="motdepasse">Mot de passe:</label>
@@ -76,6 +82,9 @@
             <input type="submit" value="Créer compte">
             <input class="ann" type="button" value="Annuler" onclick="window.location.href='annuler.php'" >
         </form>
+        <p> Vous avez un compte ?<br>
+            <a href="connexion.php"> connectez-vous</a>
+        </p>  
     </div>
 </body>
 </html>

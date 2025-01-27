@@ -1,0 +1,119 @@
+.login,
+.regester {
+  background-image: radial-gradient(white, white 5%, black);
+}
+footer {
+  height: 40px;
+  background-image: linear-gradient(45deg, green, red);
+}
+
+.div-v {
+  height: calc(100vh - 40px);
+  max-width: 750px;
+}
+
+.show-pass {
+  right: -20px;
+  top: 40px;
+  font-size: large;
+  cursor: pointer;
+}
+.chat-page {
+  background-color: rgb(98, 98, 98);
+}
+.chat-page .div-v2 {
+  height: calc(100vh - 40px) !important;
+  width: 100vw;
+}
+
+.chat-page .box-chat {
+  background-color: rgba(221, 221, 221, 0.4);
+  box-shadow: 1px 1px 20px 1px black;
+  border-radius: 10px;
+  padding: 15px;
+  width: 500px;
+  min-width: 400px;
+}
+
+.chat-page .box-chat .list-users-serche a {
+  text-decoration: none;
+  color: black;
+  h5 {
+    color: rgba(0, 0, 0, 0.752);
+  }
+}
+
+.chat-page .box-chat .list-users-serche {
+  max-height: 350px;
+  overflow-y: scroll;
+}
+
+html {
+  scrollbar-color: rgba(0, 0, 0, 0.18) rgba(0, 0, 0, 0.097); /* Couleur de la scrollbar et du track (pour Firefox) */ 
+}
+
+.msg-page .div-v2 {
+  height: calc(100vh - 40px) !important;
+  width: 100vw;
+  background-color: gray;
+}
+
+/******************  page box messagge ********************/
+.msg-page {
+  background-color: rgba(0, 0, 255, 0.431);
+  height: calc(100vh - 40px) !important;
+  width: 100vw;
+}
+.msg-page .box-chat {
+  width: 460px;
+  min-width: 350px;
+  margin: 3px;
+  background-color: gray;
+}
+
+.msg-page .box-chat {
+  background-color: aliceblue;
+}
+
+.msg-page .box-chat {
+  font-size: 18px;
+  border: 1px solid black;
+}
+.msg-page .box-chat header i {
+  color: black;
+}
+.msg-page .box-chat .body-msg {
+  background-color: rgb(108, 108, 108);
+  height: 450px;
+  overflow-y: scroll;
+}
+
+
+.msg-page .body-msg .msg {
+  background-color: rgba(255, 255, 255, 0.507);
+  padding:  6px ;
+  color: black;
+  width: max-content;
+  max-width: calc(100% - 30px);
+  margin: 10px 5px;
+  border-radius: 15px;
+  p{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 22px;
+  }
+}
+.msg-page .body-msg .my { 
+  border-top-right-radius: 0px;
+  margin-left: auto;
+  background-color: rgba(0, 0, 0, 0.537);
+  color: white;
+}
+.msg-page .body-msg .his { 
+  border-top-left-radius:  0px;
+  margin-right: auto;
+} 
+
+/******************  page box messagge END ****************/

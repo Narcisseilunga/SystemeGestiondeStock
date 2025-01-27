@@ -39,7 +39,7 @@
 </head>
 <body>
     <div class="container">
-        <h2>Rénitialisation de Compte</h2>
+        <h2>Rénitialisation du mot de passe</h2>
         <form action="reset_password.php" method="post">            
             <input type="email" name="email" placeholder="Adresse email" required>
             <input type="submit" value="Renitialiser">

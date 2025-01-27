@@ -1,48 +1,50 @@
 <?php
-// Connexion à la base de données SQLite
-$database = 'chemin_vers_votre_base_de_donnees.sqlite';
-
+session_start();
+if (isset( $_SESSION['inscription_nom_entreprise'])) {
+    $nom_entreprise = $_SESSION['inscription_nom_entreprise'];
+}else {
+    $nom_entreprise = "WISDOM SAAS";
+}
 try {
-    $conn = new PDO("sqlite:$database");
-    // Configurer PDO pour qu'il lance des exceptions en cas d'erreur
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db = new PDO('mysql:host=localhost;dbname=system_vente;charset=utf8', 'root', '');
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    die("Erreur de connexion à la base de données: " . $e->getMessage());
+    echo 'Connection failed: ' . $e->getMessage();
+    exit;
 }
 
-// Récupérer les données du formulaire
+// Retrieve form data
+$prenom = $_POST['prenom'];
+$nom = $_POST['nom'];
+$postnom = $_POST['postnom'];
+//$genre = $_POST['genre'];
+$telephone = $_POST['telephone'];
 $email = $_POST['email'];
-$password = $_POST['password'];
+$motdepasse = $_POST['motdepasse'];
+$temp = date("Y-m-d H:i:s");
+$type = "client";
 
-// Requête SQL pour récupérer les informations de l'employé
-$sql = "SELECT * FROM employes WHERE email = :email AND password = :password";
-$stmt = $conn->prepare($sql);
+
+$sql = "INSERT INTO compte (prenom, nom, postnom,  contact, email, password, temp, nom_entreprise, type) 
+        VALUES (:prenom, :nom, :postnom, :telephone, :email, :motdepasse, :temp, :nom_entreprise, :type)";
+$stmt = $db->prepare($sql);
+
+// Bind parameters and execute the statement
+$stmt->bindParam(':prenom', $prenom);
+$stmt->bindParam(':nom', $nom);
+$stmt->bindParam(':postnom', $postnom);
+//$stmt->bindParam(':genre', $genre);
+$stmt->bindParam(':telephone', $telephone);
 $stmt->bindParam(':email', $email);
-$stmt->bindParam(':password', $password);
-$stmt->execute();
+$stmt->bindParam(':motdepasse', $motdepasse);
+$stmt->bindParam(':temp', $temp);
+$stmt->bindParam(':nom_entreprise', $nom_entreprise);
+$stmt->bindParam(':type', $type);
 
-if ($stmt->rowCount() > 0) {
-    // L'utilisateur existe dans la base de données
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    $type_employe = $row['type_employe'];
-
-    // Rediriger l'utilisateur en fonction de son type d'employé
-    if ($type_employe == 'admin') {
-        header("Location: ../Dashboard/index.php");
-        exit;
-    } elseif ($type_employe == 'client') {
-        header("Location: ../panier.php");
-        exit;
-    } elseif ($type_employe == 'passagers') {
-        header("Location: ../transport/index.php");
-        exit;
-    } else {
-        echo "Type d'employé non reconnu.";
-    }
+if ($stmt->execute()) {
+    echo 'Données insérées avec succès dans la table compte.';
+    header("Location : connexion.php");
 } else {
-    // L'utilisateur n'existe pas dans la base de données
-    echo "Adresse email ou mot de passe incorrect.";
+    echo 'Erreur lors de l\'insertion des données.';
 }
-
-$conn = null;
 ?>

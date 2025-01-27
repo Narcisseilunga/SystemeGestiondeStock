@@ -1,0 +1,17 @@
+{
+    "name": "emm/article",
+    "autoload": {
+        "psr-4": {
+            "Emm\\Article\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Narcisseilunga",
+            "email": "ilunganarcisse353@gmail.com"
+        }
+    ],
+    "require": {
+        "cboden/ratchet": "^0.4.4"
+    }
+}
